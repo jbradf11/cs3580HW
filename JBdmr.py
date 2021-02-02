@@ -79,6 +79,7 @@ UBS = pd.merge(PBS, dfU.groupby('State').UnemployedPop.agg(['sum']).rename(colum
 
 # Now we can get an accurate percent Unemployment by state
 UBS['UnemployedPct'] = UBS.UnemployedPop/UBS.TotalPop*100
+print(UBS.UnemployedPct.sort_index())
 
 print('\n#2 States with highest and lowest Unemployment as a percent\n')
 print('State with Highest Percent Unemployment : %-12s: %.2f%%'%
@@ -131,6 +132,7 @@ df5['Diversity'] += df5.Native.apply(lambda x: 0 if (math.isnan(x)) or x/15 < 1 
 df5['Diversity'] += df5.Asian.apply(lambda x: 0 if (math.isnan(x)) or x/15 < 1 else 1)
 df5['Diversity'] += df5.Pacific.apply(lambda x: 0 if (math.isnan(x)) or (x/15) < 1 else 1)
 df5 = df5[df5.Diversity >= 4]
+print(df5['Diversity'].describe())
 
 
 print('\n#5 Census Tracts that are very racially diverse(4+ Races >= 15%)\n')
