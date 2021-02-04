@@ -21,13 +21,15 @@ def date_difference(high, low):
 
 print('\nPart 1: Basic Info\n')
 print ('1.1: Date Range in Days, Months and Years')
+print(df.Date.max())
+print(df.Date.min())
 date_difference(df.Date.max(),df.Date.min())
 
 print('\n1.2 average MinTemp by month')
-MTbymonth = df.groupby([df.Date.dt.month, df.Date.dt.strftime('%B')]).MinTemp.mean()
+MTbymonth = df.groupby([df.Date.dt.month, df.Date.dt.strftime('%m')]).MinTemp.mean()
 print(MTbymonth)
-# MTbymonth = df.groupby(df.Date.dt.month).MinTemp.mean()
-# result = MTbymonth.plot.histogram(x='Date', y='mean')
+df.groupby(df.Date.dt.month).MinTemp.mean().plot.bar()
+plt.show()
 
 #1.4
 
